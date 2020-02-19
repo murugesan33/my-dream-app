@@ -1,0 +1,114 @@
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center" *ngIf="!showProduct">
+            <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header" >{{title}}</div>
+                        <div class="card-body">
+                            <form name="pet-form" [formGroup]="addPetsForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group row">
+                                    <label for="pet_name" class="col-md-4 col-form-label text-md-right">Pet Name</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pet_name" class="form-control" formControlName="petname" [ngClass] ="{'is-invalid':submitted && petname.errors}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="pet_name" class="col-md-4 col-form-label text-md-right">Gender</label>
+                                    <div class="col-md-5 form-control cl-mr-01" [ngClass] ="{'is-invalid':submitted && petgender.errors}">
+                                         <div class="form-check-inline">
+                                            <label class="form-check-label" for="radio1">
+                                              <input type="radio" class="form-check-input"  id="male" name="petgender"   formControlName="petgender"  value="1">Male
+                                            </label>
+                                          </div>
+                                          <div class="form-check-inline">
+                                            <label class="form-check-label" for="radio2">
+                                              <input type="radio" class="form-check-input"  id="female" name="petgender"  formControlName="petgender"  value="2">Female
+                                            </label>
+                                          </div>
+                                    </div>
+                                </div>
+                            <div class="form-group row">
+                                    <label for="pet_age" class="col-md-4 col-form-label text-md-right">Age</label>
+                                    <div class="col-md-6">
+                                        <select class="col-md-6 form-control" formControlName="petage" [ngClass] ="{'is-invalid':submitted && petage.errors}">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Address</label>
+                                    <div class="col-md-6">
+                                        <textarea id="present_address" class="form-control" formControlName="petaddress" [ngClass] ="{'is-invalid':submitted && petaddress.errors}"></textarea>
+                                    </div>
+                                </div>   
+                                <div class="form-group row">
+                                  <label for="present_address" class="col-md-4 col-form-label text-md-right">Image</label>
+                                    <div class="col-md-6">
+                                        <input type="file" (change)="onFileSelected($event)" accept=".png, .jpg, .jpeg" >
+                                        <small *ngIf="imgEx" class="error">Please Upload image (.jpg,.png,.jpeg)</small>
+                                    </div> 
+
+                                    <!-- <h3>Choose File</h3>             -->
+                                    <!-- <div class="form-group"> 
+                                        <input type="file" name="image" (change)="fileProgress($event)" />
+                                    </div>-->
+                                    <!-- <div *ngIf="fileUploadProgress">
+                                        Upload progress: {{ fileUploadProgress }}
+                                    </div> -->
+                                    <div class="image-preview mb-3" *ngIf="previewUrl">
+                                        <img [src]="previewUrl" height="300" formControlName="image" />                 
+                                    </div>
+                        
+                                    <!-- <div class="mb-3" *ngIf="uploadedFilePath">
+                                        {{uploadedFilePath}}
+                                    </div> -->
+                                </div> 
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        {{actionBtn}}
+                                        </button>&nbsp;&nbsp;
+                                        <button type="button" class="btn btn-danger" (click)="CancelAddProducts()">
+                                            Cancel
+                                            </button>
+                                    </div>
+                                   
+                            </form>
+                        </div>
+                    </div>
+                    
+            </div>
+        </div> 
+
+        <div class="row justify-content-center" *ngIf="showProduct">
+            <div class="col-md-9 form-group row">
+                <button class="btn btn-primary" (click)="addNewProducts()">Add Products</button>
+            </div>
+            <div class="col-md-9">
+                <table class="table table-bordered table-hover">
+                        <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Product Name</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of petProdDet">
+                          <th>{{item.id}}</th>
+                          <td>{{item.name}}</td>
+                          <td>
+                              <button (click)="editProduct(item)" class="btn btn-light">Edit</button>
+                          </td>
+                        </tr>
+                        </tbody>  
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+<br>
+<br>
