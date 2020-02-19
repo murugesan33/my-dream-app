@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "fullname": "murugesan subbiah",
+      "usernname": "murugesh",
+      "password": "123456",
+      "email": "murugesan.subbiah@hcl.com",
+      "address": "Wed Sep 20 2019 17:22:41 GMT+0700"
+    },
+    {
+      "id": 2,
+      "fullname": "mahes ramlingam",
+      "usernname": "mahes",
+      "password": "123456",
+      "email": "mahes@hcl.com",
+      "address": "Wed Sep 20 2019 17:22:41 GMT+0700"
+    },
+    {
+      "id": 3,
+      "fullname": "ramkrishnan bhaiya",
+      "usernname": "ramkrish",
+      "password": "123456",
+      "email": "ramkrish@hcl.com",
+      "address": "Wed Sep 20 2019 17:22:41 GMT+0700"
+    }
+  ]
+}
